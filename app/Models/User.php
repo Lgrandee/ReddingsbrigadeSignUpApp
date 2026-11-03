@@ -45,4 +45,12 @@ class User extends Authenticatable implements PasskeyUser
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+
+    public function run(): void
+    {
+        User::factory()
+            ->count(50)
+            ->hasPosts(1)
+            ->create();
+    }
 }
