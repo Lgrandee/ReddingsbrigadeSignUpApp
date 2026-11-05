@@ -1,18 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActiviteitController;
+use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
-    Route::view('Activiteiten', 'Activiteiten.index')->name('Activiteiten');
+    Route::view('activiteiten', 'planner.activiteiten')->name('activiteiten');
+    Route::view('planner/activiteiten/create', 'planner.create')->name('planner.create');
+
 });
 
-
 // Formulier tonen
-Route::get('/planner/create', [ActiviteitController::class, 'create'])->name('activiteiten.create');
-Route::post('/planner', [ActiviteitController::class, 'store'])->name('activiteiten.store');
+Route::get('/activiteiten/create', [ActiviteitController::class, 'create'])->name('activiteiten.create');
+Route::post('/activiteiten', [ActiviteitController::class, 'store'])->name('activiteiten.store');
 
 require __DIR__.'/settings.php';

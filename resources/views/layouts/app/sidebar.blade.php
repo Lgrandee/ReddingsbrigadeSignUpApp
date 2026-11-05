@@ -19,7 +19,7 @@
                     wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:sidebar.item>
-                <flux:sidebar.item icon="bell" :href="route('Activiteiten')" :current="request()->routeIs('Activiteiten')"
+                <flux:sidebar.item icon="bell" :href="route('activiteiten')" :current="request()->routeIs('activiteiten')"
                     wire:navigate>
                     {{ __('Maak activiteit') }}
                 </flux:sidebar.item>
