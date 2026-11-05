@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Activiteit;
+use Illuminate\Http\Request;
+
 class ActiviteitController extends Controller
 {
+    public function index()
+    {
+        return view('welcome', [
+            'activiteiten' => Activiteit::latest()->get(),
+        ]);
+    }
+
     public function create()
     {
         return view('planner.create');
     }
-    
+
     // Slaat de gegevens op
     public function store(Request $request)
     {
@@ -24,7 +32,7 @@ class ActiviteitController extends Controller
         ]);
 
         // Sla op in de database
-        activiteit::create($validated);
+        Activiteit::create($validated);
 
         // Stuur de planner terug met een succesmelding
         return redirect()->route('planner.create')->with('success', 'De activiteit is succesvol toegevoegd!');
