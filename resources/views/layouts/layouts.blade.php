@@ -50,6 +50,10 @@
                         href="#contact">Contact</a>
                     <a class="text-sm text-zinc-600 hover:text-zinc-950 focus:outline-hidden focus:ring-2 focus:ring-zinc-500 dark:text-zinc-300 dark:hover:text-white"
                         href="{{ route('activiteiten') }}">Activiteiten</a>
+                    @can('manage-activities')
+                        <a class="text-sm text-zinc-600 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
+                            href="{{ route('planner.create') }}">Activiteit toevoegen</a>
+                    @endcan
                     <a class="text-sm text-zinc-600 hover:text-zinc-950 focus:outline-hidden focus:ring-2 focus:ring-zinc-500 dark:text-zinc-300 dark:hover:text-white"
                         href="{{ route('dashboard') }}">Dashboard</a>
                         

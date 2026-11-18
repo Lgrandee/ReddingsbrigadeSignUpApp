@@ -8,9 +8,15 @@
             Maak hier nieuwe activiteiten voor bewakingen en evenementen.
         </p>
         
-        <a href="{{ route('planner.create') }}"
-           class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-5 rounded-lg shadow-sm transition duration-150 ease-in-out">
-            Nieuwe activiteit
-        </a>
+        @can('manage-activities')
+            <a href="{{ route('planner.create') }}"
+               class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-5 rounded-lg shadow-sm transition duration-150 ease-in-out">
+                Nieuwe activiteit
+            </a>
+        @else
+            <p class="rounded-lg bg-zinc-100 p-4 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200">
+                Alleen planners en admins kunnen activiteiten toevoegen.
+            </p>
+        @endcan
     </div>
 @endsection

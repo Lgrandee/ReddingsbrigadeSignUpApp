@@ -10,20 +10,31 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Create a specific, static admin user
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password123'),
+            'role' => 'admin',
+            'diplomas' => ['postkommandant', 'kommandant'],
+        ]);
+
         User::create([
             'name' => 'Planner',
             'email' => 'planner@example.com',
             'password' => Hash::make('password123'),
+            'role' => 'planner',
+            'diplomas' => ['postkommandant', 'kommandant'],
         ]);
 
         User::create([
             'name' => 'John Doe',
             'email' => 'john.doe@example.com',
             'password' => Hash::make('password123'),
+            'role' => 'gebruiker',
         ]);
 
-        // 2. Create 10 random/fake users using the UserFactory
-        User::factory()->count(10)->create();
+        User::factory()
+            ->count(10)
+            ->create(['role' => 'gebruiker']);
     }
 }
